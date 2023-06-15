@@ -1,10 +1,16 @@
 import styles from "./Timer.module.scss";
 
+const millisecondsInHour = 3600000;
+const hoursPerDay = 24;
+const millisecondsInMinute = 60000;
+const millisecondsInSecond = 1000;
+const secondsInMinute = 60;
+
 const Timer = props => {
-  const hours = Math.floor((props.time / 3600000) % 24);
-  const minutes = Math.floor((props.time / 60000) % 60);
-  const seconds = Math.floor((props.time / 1000) % 60);
-  const milliseconds = props.time % 1000;
+  const hours = Math.floor((props.time / millisecondsInHour) % hoursPerDay);
+  const minutes = Math.floor((props.time / millisecondsInMinute) % secondsInMinute);
+  const seconds = Math.floor((props.time / millisecondsInSecond) % secondsInMinute);
+  const milliseconds = props.time % millisecondsInSecond;
 
   const formattedHours = ("0" + hours).slice(-2);
   const formattedMinutes = ("0" + minutes).slice(-2);
